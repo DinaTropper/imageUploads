@@ -1,0 +1,46 @@
+﻿@using imageUpload.Data
+@model ViewImageViewModel
+
+@if (!Model.Unlocked)
+{
+    @if (!String.IsNullOrEmpty(Model.InvalidMassage))
+    {
+        <h3>@Model.InvalidMassage</h3>
+    }
+    <div class="container">
+        <main role="main" class="pb-3">
+
+            <div class="row">
+                <div class="col-md-6 offset-md-3 bg-light p-4 rounded shadow">
+                    <h4>Please enter the password for this image:</h4>
+                    <form method="post">
+                        <input type="hidden" name="id" value="@Model.Image.Id" />
+                        <input type="text" class="form-control" placeholder="Password" name="password" />
+                        <br />
+                        <button class="btn btn-primary w-100">Submit</button>
+                        <input name="__RequestVerificationToken" type="hidden" value="@Model.Image.ImagePath" />
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+}
+else
+{
+    <div b-wzwicsxrru class="container">
+        <main b-wzwicsxrru role="main" class="pb-3">
+   @*          @Model.Message *@
+
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <img src="/uploads/@Model.Image.ImagePath" style="width: 800px;" />
+                    <br />
+                    <h3>Views: @Model.Views</h3>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+}
